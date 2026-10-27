@@ -1,13 +1,12 @@
-import { motion } from 'framer-motion';
-import { ExternalLink } from 'lucide-react';
+import { motion } from 'motion/react';
 import { cardVariants, containerVariants, projects } from '../constants';
 
 const Portfolio = () => {
 
 
   return (
-    <section id="portfolio" className="min-h-screen bg-slate-50 py-16 sm:py-24 px-4 sm:px-6 lg:px-8 flex flex-col justify-center">
-      <div className="max-w-6xl mx-auto w-full space-y-12 sm:space-y-16">
+    <section id="portfolio" className="section-shell bg-slate-50">
+      <div className="section-content">
         
         {/* Header */}
         <motion.div
@@ -15,15 +14,15 @@ const Portfolio = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
-          className="text-center space-y-3 max-w-3xl mx-auto"
+          className="section-header max-w-3xl mx-auto"
         >
-          <span className="text-sm uppercase tracking-widest text-blue-600 font-semibold">
+          <span className="section-eyebrow">
             Our Work
           </span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 tracking-tight">
+          <h2 className="section-title">
             Our Portfolio
           </h2>
-          <p className="text-base sm:text-lg text-slate-600 leading-relaxed pt-2">
+          <p className="section-description">
             Years of experience across diverse technologies, delivering exceptional results for businesses of all sizes.
           </p>
         </motion.div>
@@ -43,7 +42,7 @@ const Portfolio = () => {
                 key={index}
                 variants={cardVariants}
                 whileHover={{ y: -6 }}
-                className="group relative bg-white rounded-2xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col"
+                className="group relative surface-card overflow-hidden hover:shadow-xl transition-all duration-300 flex flex-col"
               >
                 {/* Image Container */}
                 <div className="relative h-56 sm:h-64 w-full overflow-hidden bg-slate-100">
@@ -52,11 +51,6 @@ const Portfolio = () => {
                     alt={project.title}
                     className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
                   />
-                  <div className="absolute inset-0 bg-slate-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <span className="p-3 bg-white/90 text-blue-600 rounded-full shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                      <ExternalLink className="w-5 h-5" />
-                    </span>
-                  </div>
                   <span className="absolute top-4 left-4 bg-white/90 backdrop-blur-md text-blue-700 text-xs font-semibold px-3 py-1 rounded-full border border-blue-100 shadow-sm flex items-center gap-1.5">
                     <IconComponent className="w-3.5 h-3.5" />
                     {project.category}

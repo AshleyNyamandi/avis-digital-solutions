@@ -6,7 +6,7 @@ import {
   MapPin, 
   ArrowRight, 
 } from 'lucide-react';
-import { FacebookIcon, InstagramIcon, TikTokIcon } from './Icons';
+import { contactDetails, services } from "../constants";
 import { Link } from 'react-router';
 
 const Footer = () => {
@@ -18,21 +18,6 @@ const Footer = () => {
     { name: 'Services', path: '/#services' },
     { name: 'Portfolio', path: '/#portfolio' },
     { name: 'Contact Us', path: '/#contact' },
-  ];
-
-  const servicesLinks = [
-    { name: 'CCTV Installation', path: '/services/cctv' },
-    { name: 'Alarm Systems', path: '/services/alarms' },
-    { name: 'Access Control', path: '/services/access-control' },
-    { name: 'WiFi Solutions', path: '/services/wifi' },
-    { name: 'Video / Audio Intercom', path: '/services/intercom' },
-  ];
-
-  const socialLinks = [
-    { icon: FacebookIcon, href: 'https://facebook.com', label: 'Facebook' },
-    { icon: InstagramIcon, href: 'https://instagram.com', label: 'Instagram' },
-    { icon: TikTokIcon, href: 'https://instagram.com', label: 'Tiktok' },
-
   ];
 
   return (
@@ -55,24 +40,7 @@ const Footer = () => {
             <p className="text-sm text-slate-400 leading-relaxed">
               Smart security solutions designed to protect what matters most. Delivering reliable technology across home and business environments.
             </p>
-            {/* Social Icons */}
-            <div className="flex items-center gap-3 pt-2">
-              {socialLinks.map((social, idx) => {
-                const IconComponent = social.icon;
-                return (
-                  <a
-                    key={idx}
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={social.label}
-                    className="p-2.5 bg-slate-800 hover:bg-blue-600 text-slate-400 hover:text-white rounded-xl transition-colors duration-200"
-                  >
-                    <IconComponent className="w-4 h-4" />
-                  </a>
-                );
-              })}
-            </div>
+
           </div>
 
           {/* Column 2: Quick Links */}
@@ -85,9 +53,9 @@ const Footer = () => {
                 <li key={idx}>
                   <Link
                     to={link.path}
-                    className="text-sm text-slate-400 hover:text-blue-400 transition-colors flex items-center gap-1.5 group"
+                    className="footer-link group"
                   >
-                    <ArrowRight className="w-3.5 h-3.5 text-blue-500 opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-200" />
+                    <ArrowRight className="footer-link-arrow" />
                     <span>{link.name}</span>
                   </Link>
                 </li>
@@ -101,14 +69,14 @@ const Footer = () => {
               Services
             </h3>
             <ul className="space-y-2.5">
-              {servicesLinks.map((service, idx) => (
+              {services.map((service, idx) => (
                 <li key={idx}>
                   <Link
-                    to={service.path}
-                    className="text-sm text-slate-400 hover:text-blue-400 transition-colors flex items-center gap-1.5 group"
+                    to={`/services/${service.slug}`}
+                    className="footer-link group"
                   >
-                    <ArrowRight className="w-3.5 h-3.5 text-blue-500 opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-200" />
-                    <span>{service.name}</span>
+                    <ArrowRight className="footer-link-arrow" />
+                    <span>{service.label}</span>
                   </Link>
                 </li>
               ))}
@@ -127,14 +95,14 @@ const Footer = () => {
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="w-5 h-5 text-blue-500 shrink-0" />
-                <a href="tel:+263771234567" className="hover:text-blue-400 transition-colors">
-                  +263 784 403 879
+                <a href={contactDetails.phoneHref} className="hover:text-blue-400 transition-colors">
+                  {contactDetails.phone}
                 </a>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-blue-500 shrink-0" />
-                <a href="mailto:info@avisdigital.com" className="hover:text-blue-400 transition-colors">
-                  info@avisdigital.com
+                <a href={`mailto:${contactDetails.email}`} className="hover:text-blue-400 transition-colors">
+                  {contactDetails.email}
                 </a>
               </li>
             </ul>

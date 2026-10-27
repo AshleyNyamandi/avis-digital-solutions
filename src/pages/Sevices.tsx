@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { 
   CheckCircle2, 
   ArrowUpRight 
@@ -9,8 +9,8 @@ import { cardVariants, containerVariants, services } from '../constants';
 const Services = () => {
 
   return (
-    <section id="services" className="min-h-screen  py-16 sm:py-24 px-4 sm:px-6 lg:px-8 flex flex-col justify-center">
-      <div className="max-w-6xl mx-auto w-full space-y-12 sm:space-y-16">
+    <section id="services" className="section-shell">
+      <div className="section-content">
         
         {/* Section Header */}
         <motion.div
@@ -18,12 +18,12 @@ const Services = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
-          className="text-center space-y-3"
+          className="section-header"
         >
-          <span className="text-sm uppercase tracking-widest text-blue-600 font-semibold">
+          <span className="section-eyebrow">
             What We Do
           </span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 tracking-tight">
+          <h2 className="section-title">
             Our Services
           </h2>
           
@@ -56,7 +56,7 @@ const Services = () => {
                 key={index}
                 variants={cardVariants}
                 whileHover={{ y: -6, transition: { duration: 0.2 } }}
-                className="bg-white rounded-2xl p-6 sm:p-8 border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group"
+                className="group surface-card feature-card p-6 sm:p-8"
               >
                 <div>
                   <div className="flex items-center justify-between mb-6">

@@ -14,3 +14,66 @@
   color: var(--color-slate-600);
   }
 }
+/* Shared component styles; utilities on consumers provide local variations. */
+@layer components {
+  .section-shell {
+    @apply min-h-screen py-16 sm:py-24 px-4 sm:px-6 lg:px-8 flex flex-col justify-center;
+  }
+  .section-content {
+    @apply max-w-6xl mx-auto w-full space-y-12 sm:space-y-16;
+  }
+  .section-header {
+    @apply text-center space-y-3;
+  }
+  .section-eyebrow {
+    @apply text-sm uppercase tracking-widest text-blue-600 font-semibold;
+  }
+  .section-title {
+    @apply text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 tracking-tight;
+  }
+  .section-description {
+    @apply text-base sm:text-lg text-slate-600 leading-relaxed pt-2;
+  }
+  .surface-card {
+    @apply bg-white rounded-2xl border border-slate-100 shadow-sm;
+  }
+  .feature-card {
+    @apply hover:shadow-xl transition-all duration-300 flex flex-col justify-between;
+  }
+  .button-primary {
+    @apply inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-medium text-base py-3.5 rounded-xl shadow-lg hover:shadow-blue-500/25 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 cursor-pointer;
+  }
+  .form-label {
+    @apply block text-sm font-medium text-slate-700;
+  }
+  .form-control {
+    @apply w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:border-blue-600 focus:ring-blue-600/20 transition-colors;
+  }
+  .form-control[aria-invalid="true"] {
+    @apply border-red-500 focus:border-red-500 focus:ring-red-500/20;
+  }
+  .form-error {
+    @apply mt-1.5 text-xs text-red-500 flex items-center gap-1;
+  }
+  .contact-detail {
+    @apply text-lg font-bold text-slate-900 hover:text-blue-600 transition-colors break-all;
+  }
+  .footer-link {
+    @apply text-sm text-slate-400 hover:text-blue-400 transition-colors flex items-center gap-1.5;
+  }
+  .footer-link-arrow {
+    @apply w-3.5 h-3.5 text-blue-500 opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-200;
+  }
+  .nav-link {
+    @apply block py-2 px-3 rounded-sm text-gray-300 hover:bg-blue-400/20 transition-colors duration-300;
+  }
+}
+
+@layer base {
+  [id] {
+    scroll-margin-top: 4.5rem;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
+}

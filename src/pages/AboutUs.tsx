@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { Target, Eye, ShieldCheck, Zap } from 'lucide-react';
 import { cardVariants, containerVariants } from '../constants';
 
@@ -6,8 +6,8 @@ const AboutUs = () => {
 
 
   return (
-    <section id="about" className="min-h-screen py-16 sm:py-24 px-4 sm:px-6 lg:px-8 flex flex-col justify-center">
-      <div className="max-w-6xl mx-auto w-full space-y-12 sm:space-y-16">
+    <section id="about" className="section-shell">
+      <div className="section-content">
         
         {/* Header */}
         <motion.div
@@ -15,15 +15,15 @@ const AboutUs = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
-          className="text-center space-y-3 max-w-3xl mx-auto"
+          className="section-header max-w-3xl mx-auto"
         >
-          <span className="text-sm uppercase tracking-widest text-blue-600 font-semibold">
+          <span className="section-eyebrow">
             Who We Are
           </span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 tracking-tight">
+          <h2 className="section-title">
             About Avis Digital Solutions
           </h2>
-          <p className="text-base sm:text-lg text-slate-600 leading-relaxed pt-2">
+          <p className="section-description">
             Driven by innovation and commitment to security, we empower homes and enterprises with reliable, intelligent technology solutions.
           </p>
         </motion.div>
@@ -40,7 +40,7 @@ const AboutUs = () => {
           <motion.div
             variants={cardVariants}
             whileHover={{ y: -6 }}
-            className="group bg-white rounded-2xl p-8 sm:p-10 border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
+            className="group surface-card feature-card p-8 sm:p-10"
           >
             <div className="space-y-6">
               <div className="flex items-center justify-between">
@@ -72,7 +72,7 @@ const AboutUs = () => {
           <motion.div
             variants={cardVariants}
             whileHover={{ y: -6 }}
-            className="group bg-white rounded-2xl p-8 sm:p-10 border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
+            className="group surface-card feature-card p-8 sm:p-10"
           >
             <div className="space-y-6">
               <div className="flex items-center justify-between">

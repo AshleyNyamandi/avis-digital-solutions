@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { ArrowRight } from 'lucide-react';
 import { containerVariants, itemVariants, stats } from '../constants';
 
@@ -31,14 +31,15 @@ const Home = () => {
 
         {/* Call to Action Button */}
         <motion.div variants={itemVariants}>
-          <motion.button
+          <motion.a
+            href="/#portfolio"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-medium text-base md:text-lg px-7 py-3.5 rounded-xl shadow-lg hover:shadow-blue-500/25 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 cursor-pointer"
+            className="button-primary px-7 md:text-lg"
           >
-            <a href='#portfolio'>View our Work</a>
+            <span>View our Work</span>
             <ArrowRight className="w-5 h-5" />
-          </motion.button>
+          </motion.a>
         </motion.div>
 
         {/* Statistics Section */}

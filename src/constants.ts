@@ -1,15 +1,17 @@
+import type { Variants } from "motion/react";
+
 import { Award, Camera, Clock, Cpu, KeyRound, Lock, Mail, Phone, PhoneCall, Shield, ShieldAlert, ShieldCheck, Video, Wifi } from "lucide-react";
 
 export const navLinks = [
-    {label: "Home", href: "#home"},
-    {label: "Services", href: "#services"},
-    {label: "Portfolio", href: "#portfolio"},
-    {label: "About", href: "#about"},
-    {label: "Contact", href: "#contact"},                
+    {label: "Home", href: "/#home"},
+    {label: "Services", href: "/#services"},
+    {label: "Portfolio", href: "/#portfolio"},
+    {label: "About", href: "/#about"},
+    {label: "Contact", href: "/#contact"},
 ];
 
 
-export const itemVariants = {
+export const itemVariants: Variants = {
 hidden: { opacity: 0, y: 20 },
 visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } },
 };
@@ -64,7 +66,7 @@ export const services = [
   },
 ];
 
-export const containerVariants = {
+export const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -76,12 +78,12 @@ export const containerVariants = {
   };
 
 
-export const cardVariants = {
+export const cardVariants: Variants = {
     hidden: { opacity: 0, y: 30 },
-    visible: { 
-      opacity: 1, 
-      y: 0, 
-      transition: { duration: 0.5, ease: 'easeOut' } 
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.5, ease: 'easeOut' }
     },
   };
 
@@ -116,33 +118,28 @@ export const projects = [
     image: "https://images.unsplash.com/photo-1520869578617-557561d7b114?auto=format&fit=crop&w=800&q=80",
     icon: Cpu,
 }
-];  
+];
 
-export  const contactCards = [
+export const contactDetails = {
+  phone: '+263 784 403 879',
+  phoneHref: 'tel:+263784403879',
+  email: 'info@avisdigital.com',
+  whatsappHref: 'https://wa.me/263784403879',
+};
+
+export const contactCards = [
     {
       title: 'Phone Number',
-      detail: '+263 784 403 879',
+      detail: contactDetails.phone,
+      href: contactDetails.phoneHref,
       subDetail: 'Mon - Fri, 8am - 5pm',
       icon: Phone,
     },
     {
       title: 'Email Address',
-      detail: 'info@avisdigital.com',
+      detail: contactDetails.email,
+      href: `mailto:${contactDetails.email}`,
       subDetail: 'Online Support 24/7',
       icon: Mail,
     },
-    // {
-    //   title: 'WhatsApp',
-    //   detail: '+263 77 123 4567',
-    //   subDetail: 'Instant Chat Support',
-    //   icon: MessageSquare,
-    //   href: 'https://wa.me/263771234567',
-    // },
-    // {
-    //   title: 'Social Media',
-    //   detail: '@AvisDigitalSolutions',
-    //   subDetail: 'Follow our updates',
-    //   icon: Share2,
-    //   href: '#',
-    // },
   ];

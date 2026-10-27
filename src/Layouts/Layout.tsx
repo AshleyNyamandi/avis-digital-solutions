@@ -1,4 +1,5 @@
 import { type ReactNode, useState } from "react"
+import { contactDetails } from "../constants"
 import Navbar from "../components/Navbar"
 import Footer from "../components/Footer"
 import { WhatsAppIcon } from "../components/Icons"
@@ -39,7 +40,7 @@ const Layout = ({children}: {children: ReactNode}) => {
               </AnimatePresence>
 
               <motion.a
-                  href="https://wa.me/your-number"
+                  href={contactDetails.whatsappHref}
                   target="_blank"
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.1 }}

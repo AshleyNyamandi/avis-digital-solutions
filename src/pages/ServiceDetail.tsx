@@ -1,7 +1,5 @@
-// src/pages/ServiceDetail.jsx
 import { useParams, Link } from "react-router";
 import { services } from "../constants";
-import { Helmet } from "react-helmet-async";
 
 export default function ServiceDetail() {
   const { slug } = useParams();
@@ -22,11 +20,9 @@ export default function ServiceDetail() {
 
   return (
       <div className="min-h-screen">
-        <Helmet>
-          <title>{`ADS: ${service.label}`}</title>
-          <meta name="description" content={`Find out more about ${service.label}`} />
-        </Helmet>
         <div className="max-w-4xl mx-auto px-6 py-20">
+          <Link to="/#services" className="inline-block mb-6 text-blue-600 hover:underline">Back to services</Link>
+          <br />
 
           <span className="inline-block bg-blue-50 text-blue-700 text-lg font-semibold px-3 py-1 rounded-full mb-4">
             {service.tag}
