@@ -1,12 +1,48 @@
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
+import { useEffect, useState } from 'react';
 import { containerVariants, itemVariants, stats } from '../constants';
 
-const Home = () => {
+const backgroundImages = [
+  '/images/network.png',
+  '/images/wifi-installation.jpeg',
+  '/images/security-cameras.jpeg',
+];
 
+const Home = () => {
+  const [currentImage, setCurrentImage] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImage((prev) => (prev + 1) % backgroundImages.length);
+    }, 5000); // change every 5 seconds
+    return () => clearInterval(interval);
+  }, []);
 
   return (
-    <div id="home" className="min-h-screen text-slate-800 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <div
+      id="home"
+      className="relative min-h-screen text-slate-800 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 overflow-hidden"
+    >
+      {/* Background Carousel */}
+      <div className="absolute inset-0 -z-10">
+        <AnimatePresence>
+          <motion.div
+            key={currentImage}
+            initial={{ opacity: 0, scale: 1.05 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1.2, ease: 'easeInOut' }}
+            className="absolute inset-0 bg-cover bg-center"
+            style={{ backgroundImage: `url(${backgroundImages[currentImage]})` }}
+          />
+        </AnimatePresence>
+
+        {/* Dark/light overlay for readability */}
+        <div className="absolute inset-0 bg-white/75 backdrop-blur-[2px]" />
+      </div>
+
+      {/* Your existing content */}
       <motion.div
         variants={containerVariants}
         initial="hidden"
@@ -36,7 +72,7 @@ const Home = () => {
             whileTap={{ scale: 0.95 }}
             className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-medium text-base md:text-lg px-7 py-3.5 rounded-xl shadow-lg hover:shadow-blue-500/25 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 cursor-pointer"
           >
-            <a href='#portfolio'>View our Work</a>
+            <a href="#portfolio">View our Work</a>
             <ArrowRight className="w-5 h-5" />
           </motion.button>
         </motion.div>
