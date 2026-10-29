@@ -1,5 +1,5 @@
 import { Award, Camera, Clock, Cpu, KeyRound, Lock, Mail, Phone, PhoneCall, Shield, ShieldAlert, ShieldCheck, Video, Wifi } from "lucide-react";
-import type { Variants } from 'motion/react';
+import type { Variants } from 'framer-motion';
 
 export const navLinks = [
     {label: "Home", href: "#home"},

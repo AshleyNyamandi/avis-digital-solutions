@@ -9,8 +9,8 @@ import Services from "./Sevices"
 const Main = () => {
   return (
     <div>
+        <Home />
         <Layout>
-          <Home />
           <Services />
           <Portfolio />
           <AboutUs />
