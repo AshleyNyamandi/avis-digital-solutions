@@ -1,4 +1,5 @@
 import { Award, Camera, Clock, Cpu, KeyRound, Lock, Mail, Phone, PhoneCall, Shield, ShieldAlert, ShieldCheck, Video, Wifi } from "lucide-react";
+import type { Variants } from 'motion/react';
 
 export const navLinks = [
     {label: "Home", href: "#home"},
@@ -9,7 +10,7 @@ export const navLinks = [
 ];
 
 
-export const itemVariants = {
+export const itemVariants: Variants = {
 hidden: { opacity: 0, y: 20 },
 visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } },
 };
@@ -64,7 +65,7 @@ export const services = [
   },
 ];
 
-export const containerVariants = {
+export const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -76,7 +77,7 @@ export const containerVariants = {
   };
 
 
-export const cardVariants = {
+export const cardVariants: Variants = {
     hidden: { opacity: 0, y: 30 },
     visible: { 
       opacity: 1, 
