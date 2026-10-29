@@ -22,7 +22,7 @@ const Home = () => {
   return (
     <div
       id="home"
-      className="relative min-h-screen text-slate-800 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 overflow-hidden"
+      className="relative min-h-screen text-slate-800 flex items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden py-20"
     >
       {/* Background Carousel */}
       <div className="absolute inset-0 -z-10">
@@ -42,7 +42,7 @@ const Home = () => {
         <div className="absolute inset-0 bg-white/75 backdrop-blur-[2px]" />
       </div>
 
-      {/* Your existing content */}
+      
       <motion.div
         variants={containerVariants}
         initial="hidden"
@@ -52,7 +52,7 @@ const Home = () => {
         {/* Main Headline */}
         <motion.h1
           variants={itemVariants}
-          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-blue-600 sm:text-blue-500 md:text-blue-700 lg:text-blue-800"
+          className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight text-blue-600 sm:text-blue-500 md:text-blue-700 lg:text-blue-800"
         >
           AVIS DIGITAL SOLUTIONS
         </motion.h1>
