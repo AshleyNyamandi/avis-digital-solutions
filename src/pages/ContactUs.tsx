@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import type { ChangeEvent, FormEvent } from 'react';
 import { motion } from 'framer-motion';
 import { Send, CheckCircle, AlertCircle } from 'lucide-react';
 import { contactCards } from '../constants';
@@ -19,7 +20,8 @@ const ContactUs = () => {
     message: '',
   });
 
-  const [errors, setErrors] = useState({});
+  type FormErrors = Partial<Record<keyof typeof formData, string | null>>;
+  const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const MAX_MESSAGE_LENGTH = 500;
@@ -27,8 +29,9 @@ const ContactUs = () => {
 
 
   // Controlled Input Handler
-  const handleChange = (e) => {
-    const { name, value } = e.target;
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.currentTarget;
+    if (name !== 'name' && name !== 'email' && name !== 'subject' && name !== 'message') return;
     
     // Prevent typing beyond character limit for message
     if (name === 'message' && value.length > MAX_MESSAGE_LENGTH) return;
@@ -43,7 +46,7 @@ const ContactUs = () => {
 
   // Validation Logic
   const validateForm = () => {
-    const newErrors = {};
+    const newErrors: FormErrors = {};
 
     if (!formData.name.trim()) {
       newErrors.name = 'Full name is required.';
@@ -70,7 +73,7 @@ const ContactUs = () => {
   };
 
   // Submit Handler
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (validateForm()) {
       setIsSubmitted(true);
