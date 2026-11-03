@@ -1,12 +1,30 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, ShieldCheck, Wifi, Camera } from 'lucide-react';
 import { useEffect, useState } from 'react';
-import { containerVariants, itemVariants, stats } from '../constants';
+import { containerVariants, itemVariants } from '../constants';
 
 const backgroundImages = [
   '/images/network.png',
   '/images/wifi-installation.jpeg',
   '/images/security-cameras.jpeg',
+];
+
+const highlights = [
+  {
+    icon: ShieldCheck,
+    title: 'Reliable Protection',
+    description: 'Round-the-clock security systems built to keep your property safe.',
+  },
+  {
+    icon: Wifi,
+    title: 'Seamless Connectivity',
+    description: 'Fast, stable networks and WiFi installations with zero downtime.',
+  },
+  {
+    icon: Camera,
+    title: 'Smart Surveillance',
+    description: 'Modern camera systems you can monitor from anywhere, anytime.',
+  },
 ];
 
 const Home = () => {
@@ -42,7 +60,6 @@ const Home = () => {
         <div className="absolute inset-0 bg-white/75 backdrop-blur-[2px]" />
       </div>
 
-      
       <motion.div
         variants={containerVariants}
         initial="hidden"
@@ -60,9 +77,10 @@ const Home = () => {
         {/* Subtitle */}
         <motion.p
           variants={itemVariants}
-          className="max-w-xl text-base sm:text-lg md:text-xl text-slate-600 leading-relaxed font-normal"
+          className="max-w-2xl text-base sm:text-lg md:text-xl text-slate-600 leading-relaxed font-normal"
         >
-          Smart security solutions designed to protect what matters most.
+          Delivering the security and connectivity your home or business needs to
+          stay protected day and night.
         </motion.p>
 
         {/* Call to Action Button */}
@@ -77,28 +95,28 @@ const Home = () => {
           </motion.button>
         </motion.div>
 
-        {/* Statistics Section */}
+        {/* Highlight Info Section (replaces stats cards) */}
         <motion.div
           variants={itemVariants}
-          className="w-full grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6 pt-8 md:pt-12"
+          className="w-full grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-8 pt-8 md:pt-12"
         >
-          {stats.map((stat, index) => {
-            const IconComponent = stat.icon;
+          {highlights.map((item, index) => {
+            const IconComponent = item.icon;
             return (
               <motion.div
                 key={index}
                 whileHover={{ y: -4 }}
-                className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex flex-col items-center justify-center space-y-2 transition-shadow hover:shadow-md"
+                className="flex flex-col items-center text-center space-y-3 px-2"
               >
-                <div className="p-3 bg-blue-50 text-blue-600 rounded-full mb-1">
+                <div className="p-3 bg-blue-600/10 text-blue-700 rounded-full">
                   <IconComponent className="w-6 h-6" />
                 </div>
-                <span className="text-3xl md:text-4xl font-extrabold text-blue-700">
-                  {stat.value}
-                </span>
-                <span className="text-sm md:text-base font-medium text-slate-500">
-                  {stat.label}
-                </span>
+                <h3 className="text-base md:text-lg font-semibold text-slate-800">
+                  {item.title}
+                </h3>
+                <p className="text-sm text-slate-500 leading-relaxed">
+                  {item.description}
+                </p>
               </motion.div>
             );
           })}
