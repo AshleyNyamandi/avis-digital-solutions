@@ -1,39 +1,15 @@
 
 import { 
-  ShieldCheck, 
   Phone, 
   Mail, 
   MapPin, 
   ArrowRight, 
 } from 'lucide-react';
-import { FacebookIcon, InstagramIcon, TikTokIcon } from './Icons';
-import { Link } from 'react-router';
+import { navLinks, servicesLinks, socialLinks } from '../constants';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
-  const quickLinks = [
-    { name: 'Home', path: '/' },
-    { name: 'About Us', path: '/#about' },
-    { name: 'Services', path: '/#services' },
-    { name: 'Portfolio', path: '/#portfolio' },
-    { name: 'Contact Us', path: '/#contact' },
-  ];
-
-  const servicesLinks = [
-    { name: 'CCTV Installation', path: '/services/cctv' },
-    { name: 'Alarm Systems', path: '/services/alarms' },
-    { name: 'Access Control', path: '/services/access-control' },
-    { name: 'WiFi Solutions', path: '/services/wifi' },
-    { name: 'Video / Audio Intercom', path: '/services/intercom' },
-  ];
-
-  const socialLinks = [
-    { icon: FacebookIcon, href: 'https://facebook.com', label: 'Facebook' },
-    { icon: InstagramIcon, href: 'https://instagram.com', label: 'Instagram' },
-    { icon: TikTokIcon, href: 'https://instagram.com', label: 'Tiktok' },
-
-  ];
 
   return (
     <footer className="bg-slate-900 text-slate-300 pt-16 pb-8 border-t border-slate-800">
@@ -45,11 +21,8 @@ const Footer = () => {
           {/* Column 1: Brand Info */}
           <div className="space-y-4">
             <div className="flex items-center gap-2">
-              <div className="p-2 bg-blue-600 rounded-lg text-white">
-                <ShieldCheck className="w-6 h-6" />
-              </div>
               <span className="text-xl font-bold tracking-tight text-white">
-                AVIS <span className="text-blue-500">DIGITAL</span>
+                AVIZ <span className="text-blue-500">DIGITAL</span>
               </span>
             </div>
             <p className="text-sm text-slate-400 leading-relaxed">
@@ -81,15 +54,15 @@ const Footer = () => {
               Quick Links
             </h3>
             <ul className="space-y-2.5">
-              {quickLinks.map((link, idx) => (
+              {navLinks.map((link, idx) => (
                 <li key={idx}>
-                  <Link
-                    to={link.path}
+                  <a
+                    href={link.href}
                     className="text-sm text-slate-400 hover:text-blue-400 transition-colors flex items-center gap-1.5 group"
                   >
                     <ArrowRight className="w-3.5 h-3.5 text-blue-500 opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-200" />
-                    <span>{link.name}</span>
-                  </Link>
+                    <span>{link.label}</span>
+                  </a>
                 </li>
               ))}
             </ul>
@@ -103,13 +76,12 @@ const Footer = () => {
             <ul className="space-y-2.5">
               {servicesLinks.map((service, idx) => (
                 <li key={idx}>
-                  <Link
-                    to={service.path}
+                  <p
                     className="text-sm text-slate-400 hover:text-blue-400 transition-colors flex items-center gap-1.5 group"
                   >
                     <ArrowRight className="w-3.5 h-3.5 text-blue-500 opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-200" />
                     <span>{service.name}</span>
-                  </Link>
+                  </p>
                 </li>
               ))}
             </ul>
@@ -134,7 +106,7 @@ const Footer = () => {
               <li className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-blue-500 shrink-0" />
                 <a href="mailto:info@avisdigital.com" className="hover:text-blue-400 transition-colors">
-                  info@avisdigital.com
+                  avizdigitalsolutions@gmail.com
                 </a>
               </li>
             </ul>
@@ -149,12 +121,12 @@ const Footer = () => {
           <p className="flex items-center gap-1">
             <span>Designed & Developed by</span>
             <a 
-              href="https://nymdsoftware.com" 
+              href="https://www.ashleynymd.co.zw/" 
               target="_blank" 
               rel="noopener noreferrer"
               className="font-semibold text-blue-400 hover:text-blue-300 underline underline-offset-2 transition-colors"
             >
-              Nymd Software Agency
+              Ashley Nymd
             </a>
           </p>
         </div>

@@ -1,12 +1,12 @@
 import { Route, Routes } from "react-router"
 import Main from "./pages/Main"
-import ServiceDetail from "./pages/ServiceDetail"
+import NotFound from "./pages/NotFound"
 
 const App = () => {
   return (
     <Routes>
       <Route path="/" element={<Main />} />
-      <Route path="/services/:slug" element={<ServiceDetail />} />
+      <Route path="*" element={<NotFound />} />
     </Routes>
   )
 }

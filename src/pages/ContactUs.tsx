@@ -23,6 +23,8 @@ const ContactUs = () => {
   type FormErrors = Partial<Record<keyof typeof formData, string | null>>;
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [submitError, setSubmitError] = useState('');
 
   const MAX_MESSAGE_LENGTH = 500;
 
@@ -62,24 +64,58 @@ const ContactUs = () => {
       newErrors.subject = 'Subject is required.';
     }
 
-    if (!formData.message.trim()) {
-      newErrors.message = 'Message cannot be empty.';
-    } else if (formData.message.length < 10) {
-      newErrors.message = 'Message must be at least 10 characters long.';
-    }
-
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
   // Submit Handler
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (validateForm()) {
+    if (!validateForm()) return;
+
+    setIsLoading(true);
+    setSubmitError('');
+
+    try {
+      const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
+
+      if (!accessKey) {
+        throw new Error(
+          'Web3Forms configuration is missing. Please check your environment variables.'
+        );
+      }
+
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          access_key: accessKey,
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+        }),
+      });
+
+      const result = await response.json();
+
+      if (!result.success) {
+        throw new Error(result.message || 'Failed to send message.');
+      }
+
       setIsSubmitted(true);
-      // Reset form after submission
       setFormData({ name: '', email: '', subject: '', message: '' });
       setTimeout(() => setIsSubmitted(false), 5000);
+    } catch (error) {
+      console.error('Web3Forms error:', error);
+      setSubmitError(
+        (error as Error).message || 'Failed to send message. Please try again later.'
+      );
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -142,7 +178,7 @@ const ContactUs = () => {
               );
             })}
                 <Link
-                to=""
+                to="https://wa.me/message/IE5FN7RIDHSEK1"
                   className="group bg-green-200 p-6 rounded-2xl border border-green-700 shadow-sm hover:bg-green-300/50 hover:border-green-800 hover:border-2 transition-colors duration-300 flex items-center justify-center gap-5 cursor-pointer"
                 >
                   <div>
@@ -201,6 +237,17 @@ const ContactUs = () => {
               >
                 <CheckCircle className="w-5 h-5 shrink-0 text-emerald-600" />
                 <span>Thank you! Your message has been sent successfully. We will get back to you shortly.</span>
+              </motion.div>
+            )}
+
+            {submitError && (
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="mb-6 p-4 bg-red-50 border border-red-200 text-red-700 rounded-xl flex items-center gap-3 text-sm font-medium"
+              >
+                <AlertCircle className="w-5 h-5 shrink-0 text-red-600" />
+                <span>{submitError}</span>
               </motion.div>
             )}
 
@@ -309,11 +356,14 @@ const ContactUs = () => {
               {/* Submit Button */}
               <motion.button
                 type="submit"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="w-full inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-medium text-base py-3.5 rounded-xl shadow-lg hover:shadow-blue-500/25 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 cursor-pointer"
+                disabled={isLoading}
+                whileHover={{ scale: isLoading ? 1 : 1.02 }}
+                whileTap={{ scale: isLoading ? 1 : 0.98 }}
+                className={`w-full inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-medium text-base py-3.5 rounded-xl shadow-lg hover:shadow-blue-500/25 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 cursor-pointer ${
+                  isLoading ? 'opacity-60 cursor-not-allowed' : ''
+                }`}
               >
-                <span>Send Message</span>
+                <span>{isLoading ? 'Sending...' : 'Send Message'}</span>
                 <Send className="w-4 h-4" />
               </motion.button>
             </form>

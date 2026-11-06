@@ -15,7 +15,7 @@ const Navbar = () => {
                     >
                         ADS
                     </div>
-                    <p className="hidden sm:block tracking-wide">AVIS DIGITAL SOLUTIONS</p>
+                    <p className="hidden sm:block tracking-wide">AVIZ DIGITAL SOLUTIONS</p>
                 </div>
             </div>
             <div className="flex-1 hidden lg:block">

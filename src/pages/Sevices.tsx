@@ -1,9 +1,7 @@
 import { motion } from 'framer-motion';
 import { 
   CheckCircle2, 
-  ArrowUpRight 
 } from 'lucide-react';
-import { Link } from 'react-router';
 import { cardVariants, containerVariants, services } from '../constants';
 
 const Services = () => {
@@ -76,13 +74,6 @@ const Services = () => {
                     {service.description}
                   </p>
                 </div>
-
-                <Link 
-                    to={`/services/${service.slug}`}
-                    className="pt-6 mt-6 border-t border-slate-50 flex items-center text-sm font-semibold text-blue-600 group-hover:text-blue-700 cursor-pointer">
-                  <span>Learn details</span>
-                  <ArrowUpRight className="w-4 h-4 ml-1 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                </Link>
               </motion.div>
             );
           })}

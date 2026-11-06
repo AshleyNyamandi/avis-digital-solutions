@@ -21,10 +21,10 @@ const AboutUs = () => {
             Who We Are
           </span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 tracking-tight">
-            About Avis Digital Solutions
+            About Aviz Digital Solutions
           </h2>
           <p className="text-base sm:text-lg text-slate-600 leading-relaxed pt-2">
-            Driven by innovation and commitment to security, we empower homes and enterprises with reliable, intelligent technology solutions.
+              ADS delivers professional WiFi and security solutions for homes and businesses. Driven by innovation and a commitment to security, our dedicated, experienced team empowers you with reliable, intelligent technolog you can count on.         
           </p>
         </motion.div>
 

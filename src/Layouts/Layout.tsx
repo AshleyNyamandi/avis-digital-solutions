@@ -39,7 +39,7 @@ const Layout = ({children}: {children: ReactNode}) => {
               </AnimatePresence>
 
               <motion.a
-                  href="https://wa.me/your-number"
+                  href="https://wa.me/message/IE5FN7RIDHSEK1"
                   target="_blank"
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.1 }}
