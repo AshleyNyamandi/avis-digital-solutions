@@ -139,7 +139,7 @@ export const projects = [
 export  const contactCards = [
     {
       title: 'Phone Number',
-      detail: '+263 784 403 879',
+      detail: '+263 775 891 327',
       subDetail: 'Mon - Fri, 8am - 5pm',
       icon: Phone,
     },

@@ -77,11 +77,11 @@ const ContactUs = () => {
     setSubmitError('');
 
     try {
-      const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
+      const accessKey = "38e361dd-b674-4244-82e7-fb4535a96a93";
 
       if (!accessKey) {
         throw new Error(
-          'Web3Forms configuration is missing. Please check your environment variables.'
+          'Something went wrong, Please try again later'
         );
       }
 
@@ -179,7 +179,7 @@ const ContactUs = () => {
             })}
                 <Link
                 to="https://wa.me/message/IE5FN7RIDHSEK1"
-                  className="group bg-green-200 p-6 rounded-2xl border border-green-700 shadow-sm hover:bg-green-300/50 hover:border-green-800 hover:border-2 transition-colors duration-300 flex items-center justify-center gap-5 cursor-pointer"
+                  className="group bg-green-200 p-6 rounded-2xl border border-green-700 shadow-sm hover:bg-green-300/95 transition-colors duration-300 flex items-center justify-center gap-5 cursor-pointer"
                 >
                   <div>
                     <h3 className="text-sm font-semibold text-black uppercase tracking-wider flex gap-2 items-center">
@@ -200,19 +200,19 @@ const ContactUs = () => {
                     >
                         <a 
                             href="/"
-                            className='p-2 border-0 border-amber-50 hover:border hover:border-light-blue rounded-sm transition-all duration-200 ease-in'
+                            className='p-2 border border-amber-50 hover:border-light-blue rounded-sm transition-all duration-200 ease-in'
                         >
                             <InstagramIcon size={40} />
                         </a>  
                         <a
                             href="/"
-                            className='p-2 border-0 border-amber-50 hover:border hover:border-light-blue rounded-sm transition-all duration-200 ease-in'
+                            className='p-2 border border-amber-50  hover:border-light-blue rounded-sm transition-all duration-200 ease-in'
                         >
                             <FacebookIcon size={40} />
                         </a>   
                         <a
                             href="/"
-                            className='p-2 border-0 border-amber-50 hover:border hover:border-light-blue rounded-sm transition-all duration-200 ease-in'
+                            className='p-2 border border-amber-50  hover:border-light-blue rounded-sm transition-all duration-200 ease-in'
                         >
                             <TikTokIcon size={40} />
                         </a>               

@@ -71,7 +71,7 @@ const Home = () => {
           variants={itemVariants}
           className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight text-blue-600 sm:text-blue-500 md:text-blue-700 lg:text-blue-800"
         >
-          AVIS DIGITAL SOLUTIONS
+          AVIZ DIGITAL SOLUTIONS
         </motion.h1>
 
         {/* Subtitle */}

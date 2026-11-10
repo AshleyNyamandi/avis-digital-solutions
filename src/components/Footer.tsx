@@ -100,7 +100,7 @@ const Footer = () => {
               <li className="flex items-center gap-3">
                 <Phone className="w-5 h-5 text-blue-500 shrink-0" />
                 <a href="tel:+263771234567" className="hover:text-blue-400 transition-colors">
-                  +263 784 403 879
+                  +263 775 891 327
                 </a>
               </li>
               <li className="flex items-center gap-3">
@@ -126,7 +126,7 @@ const Footer = () => {
               rel="noopener noreferrer"
               className="font-semibold text-blue-400 hover:text-blue-300 underline underline-offset-2 transition-colors"
             >
-              Ashley Nymd
+              Ashley
             </a>
           </p>
         </div>
